@@ -1,235 +1,931 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Martin N Kanyangela – Khomas Media</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--blue:#194c7f;--blue-dark:#0f2e50;--blue-light:#2a6db5;--blue-pale:#e8f1fb;--gray:#959798;--text:#1a1a2e}
-body{font-family:'Inter',sans-serif;background:#f0f4f8;min-height:100vh;display:flex;justify-content:center;padding:0 0 40px}
-.card{width:100%;max-width:420px;background:#fff;min-height:100vh;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(25,76,127,0.18)}
-.hero{position:relative;background:linear-gradient(160deg,var(--blue-dark) 0%,var(--blue) 60%,var(--blue-light) 100%);padding:52px 28px 68px;text-align:center;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,0.06) 0%,transparent 50%),radial-gradient(circle at 20% 80%,rgba(255,255,255,0.04) 0%,transparent 40%)}
-.hero-logo-wrap{position:relative;z-index:1;display:inline-block;background:#fff;border-radius:20px;padding:18px 28px;margin-bottom:24px;box-shadow:0 6px 24px rgba(0,0,0,0.18);animation:popIn .7s cubic-bezier(.34,1.56,.64,1) .15s both}
-.hero-logo-wrap svg{width:200px;height:auto;display:block}
-.hero h1{font-family:'Playfair Display',serif;font-size:25px;color:#fff;margin:0 0 5px;position:relative;z-index:1;animation:fadeUp .6s ease .4s both}
-.hero-title{font-size:11px;font-weight:600;color:rgba(255,255,255,0.65);letter-spacing:2.5px;text-transform:uppercase;position:relative;z-index:1;animation:fadeUp .6s ease .5s both}
-.hero-wave{position:absolute;bottom:-2px;left:0;width:100%;line-height:0;z-index:1}
-.actions{display:flex;justify-content:center;gap:12px;padding:26px 20px 18px;background:#fff;animation:fadeUp .6s ease .6s both}
-.action-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 6px;border-radius:16px;border:none;cursor:pointer;text-decoration:none;transition:all .22s ease;font-family:'Inter',sans-serif}
-.action-btn:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(25,76,127,0.22)}
-.action-btn:active{transform:scale(.96)}
-.action-btn.primary{background:var(--blue);color:#fff}
-.action-btn.secondary{background:var(--blue-pale);color:var(--blue)}
-.action-btn .btn-icon{width:22px;height:22px;display:flex;align-items:center;justify-content:center}
-.action-btn .btn-icon svg{width:22px;height:22px}
-.action-btn span.label{font-size:11px;font-weight:600;letter-spacing:.4px}
-.section{margin:0 18px 14px;background:#fff;border-radius:18px;border:1px solid #eaeff6;overflow:hidden;animation:fadeUp .6s ease both}
-.section-header{padding:13px 18px 11px;border-bottom:1px solid #f2f5fb;display:flex;align-items:center;gap:8px}
-.sec-icon{width:26px;height:26px;background:var(--blue-pale);border-radius:7px;display:flex;align-items:center;justify-content:center}
-.sec-icon svg{width:14px;height:14px}
-.section-header h2{font-size:11px;font-weight:600;color:var(--gray);letter-spacing:1.5px;text-transform:uppercase}
-.contact-row{display:flex;align-items:center;padding:13px 18px;border-bottom:1px solid #f8f9fb;text-decoration:none;transition:background .18s ease;cursor:pointer}
-.contact-row:last-child{border-bottom:none}
-.contact-row:hover{background:#f8f9fb}
-.contact-row:active{background:#f0f4f8}
-.row-icon{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:13px}
-.row-icon svg{width:18px;height:18px}
-.row-icon.blue{background:var(--blue)}
-.row-icon.pale{background:var(--blue-pale)}
-.row-content{flex:1;min-width:0}
-.row-label{font-size:10px;color:var(--gray);font-weight:500;margin-bottom:2px;letter-spacing:.3px}
-.row-value{font-size:13px;color:var(--text);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row-arrow svg{width:14px;height:14px;flex-shrink:0;margin-left:6px}
-.address-box{padding:15px 18px;display:flex;gap:13px;align-items:flex-start}
-.addr-icon{width:38px;height:38px;border-radius:11px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.addr-icon svg{width:18px;height:18px}
-.address-text{font-size:13px;color:var(--text);line-height:1.65}
-.address-text strong{display:block;font-size:10px;color:var(--gray);font-weight:600;margin-bottom:4px;letter-spacing:1px;text-transform:uppercase}
-.map-frame{width:100%;height:200px;border:none;display:block}
-.socials{display:flex;justify-content:center;gap:14px;padding:4px 20px 16px;animation:fadeUp .6s ease 1.0s both}
-.social-btn{width:44px;height:44px;border-radius:13px;background:var(--blue);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .22s ease}
-.social-btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(25,76,127,0.3);background:var(--blue-dark)}
-.social-btn:active{transform:scale(.94)}
-.social-btn svg{width:20px;height:20px}
-.save-btn{display:flex;align-items:center;justify-content:center;gap:10px;margin:4px 18px 8px;padding:15px;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-light) 100%);border-radius:16px;color:#fff;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;border:none;font-family:'Inter',sans-serif;width:calc(100% - 36px);transition:all .22s ease;animation:fadeUp .6s ease .95s both;letter-spacing:.4px}
-.save-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(25,76,127,0.32)}
-.save-btn:active{transform:scale(.98)}
-.save-btn svg{width:18px;height:18px}
-.footer{text-align:center;padding:14px;font-size:11px;color:#bbb;animation:fadeUp .5s ease 1.1s both}
-.footer strong{color:var(--gray)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@keyframes popIn{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
-.section:nth-child(1){animation-delay:.65s}
-.section:nth-child(2){animation-delay:.75s}
-.section:nth-child(3){animation-delay:.85s}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Susan Nyatondo Incorporated | Legal Practitioners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #FFD954;
+      --gold-dark: #C9A227;
+      --gold-light: #FFE98A;
+      --black: #0A0A0A;
+      --black-2: #111111;
+      --black-3: #1A1A1A;
+      --black-4: #252525;
+      --white: #FFFFFF;
+      --grey: #888888;
+      --grey-light: #AAAAAA;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      max-width: 430px;
+      margin: 0 auto;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    ::-webkit-scrollbar { display: none; }
+
+    /* ─── PRELOADER ─── */
+    #preloader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: var(--black);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 20px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #preloader.hide { opacity: 0; visibility: hidden; }
+    .preloader-logo-wrap {
+      width: 120px; height: 80px;
+      animation: rotatePulse 1.5s ease-in-out infinite;
+    }
+    .preloader-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px; letter-spacing: 4px;
+      color: var(--gold); opacity: 0.8;
+      font-weight: 700; text-transform: uppercase;
+    }
+    .preloader-bar {
+      width: 120px; height: 2px;
+      background: var(--black-4);
+      border-radius: 2px; overflow: hidden;
+    }
+    .preloader-bar-fill {
+      height: 100%; background: var(--gold);
+      animation: loadBar 1.8s ease forwards;
+    }
+    @keyframes loadBar { from { width: 0; } to { width: 100%; } }
+    @keyframes rotatePulse {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+
+    /* ─── PARTICLES ─── */
+    #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatParticle var(--dur, 8s) var(--delay, 0s) ease-in-out infinite;
+    }
+    @keyframes floatParticle {
+      0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+      10% { opacity: 0.3; }
+      90% { opacity: 0.15; }
+      100% { transform: translateY(-100px) translateX(var(--drift, 20px)); opacity: 0; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, #0A0A0A 0%, #111111 100%);
+      padding: 0 0 16px;
+      min-height: unset;
+    }
+    .hero-top-bar {
+      height: 5px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold), var(--gold-dark));
+      background-size: 200% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* Abstract elegant background geometry */
+    .hero-geo {
+      position: absolute; inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-geo::before {
+      content: '';
+      position: absolute;
+      right: -60px; top: -40px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,217,84,0.12) 0%, transparent 65%);
+    }
+    .hero-geo::after {
+      content: '';
+      position: absolute;
+      left: -80px; bottom: 40px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,217,84,0.07) 0%, transparent 65%);
+    }
+    .hero-lines {
+      position: absolute; right: 0; top: 0; bottom: 0; width: 50%;
+      opacity: 0.04;
+      background-image:
+        repeating-linear-gradient(0deg, var(--gold) 0px, var(--gold) 1px, transparent 1px, transparent 28px),
+        repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 1px, transparent 1px, transparent 28px);
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column;
+      align-items: center;
+      padding: 36px 24px 0;
+      text-align: center;
+    }
+
+    /* Full logo container — white card style */
+    .logo-wrap {
+      width: 260px;
+      background: transparent;
+      display: flex; align-items: center; justify-content: center;
+      animation: fadeDown 0.8s ease both;
+      animation-delay: 0.2s;
+      padding: 0;
+    }
+    .logo-wrap svg { width: 100%; height: auto; }
+
+    /* Dark divider strip between white top and dark bottom */
+    .hero-divider-band {
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,217,84,0.5), transparent);
+      margin: 20px 0 0;
+    }
+
+    .hero-name {
+      margin-top: 20px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 28px; font-weight: 800;
+      letter-spacing: 1px; line-height: 1.2;
+      color: var(--white);
+    }
+    .hero-name span { color: var(--gold); }
+    .hero-firm {
+      margin-top: 5px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px; font-style: italic;
+      color: var(--grey-light); letter-spacing: 0.5px;
+      font-weight: 400;
+      animation: fadeUp 0.8s ease both; animation-delay: 0.6s;
+    }
+    .hero-title {
+      margin-top: 8px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 2.5px; color: var(--grey);
+      text-transform: uppercase;
+      animation: fadeUp 0.8s ease both; animation-delay: 0.7s;
+    }
+    .hero-gold-rule {
+      margin: 16px auto 0;
+      width: 70px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+      animation: fadeUp 0.8s ease both; animation-delay: 0.8s;
+    }
+    .hero-quals {
+      margin-top: 12px;
+      font-size: 9px; letter-spacing: 1.5px;
+      color: var(--grey); line-height: 1.9;
+      font-weight: 500;
+      animation: fadeUp 0.8s ease both; animation-delay: 0.9s;
+    }
+
+    /* ─── SOCIAL ─── */
+    .social-section {
+      padding: 28px 24px;
+      background: var(--black-2);
+      border-top: 1px solid rgba(255,217,84,0.12);
+      border-bottom: 1px solid rgba(255,217,84,0.12);
+    }
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 9px; letter-spacing: 4px;
+      color: var(--gold); text-align: center;
+      margin-bottom: 18px; opacity: 0.9;
+      font-weight: 700; text-transform: uppercase;
+    }
+    .social-row {
+      display: flex; justify-content: center;
+      gap: 20px; flex-wrap: wrap;
+    }
+    .social-icon {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 7px;
+      text-decoration: none;
+    }
+    .social-icon-circle {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--black-3);
+      border: 1.5px solid rgba(255,217,84,0.25);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover .social-icon-circle {
+      background: var(--gold);
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(255,217,84,0.3);
+    }
+    .social-icon:hover .social-icon-circle svg { color: var(--black); }
+    .social-icon-circle svg { color: var(--gold); transition: color 0.3s ease; }
+    .social-label {
+      font-size: 9px; letter-spacing: 0.5px;
+      color: var(--grey); font-weight: 600;
+    }
+
+    /* ─── CONTACT SECTION ─── */
+    .contact-section { padding: 32px 20px; background: var(--black); }
+    .section-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 4px; color: var(--gold);
+      margin-bottom: 20px; text-transform: uppercase;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0.4;
+    }
+    .contact-card {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--black-2);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative; overflow: hidden;
+    }
+    .contact-card::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+      transform-origin: bottom;
+    }
+    .contact-card:hover { border-color: rgba(255,217,84,0.25); background: var(--black-3); }
+    .contact-card:hover::before { transform: scaleY(1); }
+    .contact-icon-box {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: rgba(255,217,84,0.1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-icon-box svg { color: var(--gold); }
+    .contact-info { flex: 1; }
+    .contact-label {
+      font-size: 8px; letter-spacing: 2px; font-weight: 700;
+      color: var(--grey); text-transform: uppercase; margin-bottom: 3px;
+    }
+    .contact-value {
+      font-size: 13px; font-weight: 500; color: var(--white);
+      line-height: 1.5;
+    }
+
+    /* ─── ABOUT SECTION ─── */
+    .about-section {
+      padding: 36px 20px;
+      background: var(--black-2);
+      border-top: 1px solid rgba(255,217,84,0.12);
+    }
+    .about-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px; line-height: 1.85;
+      color: var(--grey-light);
+      font-weight: 400;
+    }
+    .about-text span { color: var(--gold); font-weight: 700; }
+    .gold-quote {
+      font-size: 64px; color: var(--gold);
+      opacity: 0.2; line-height: 1;
+      margin-bottom: -12px;
+      font-weight: 800;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-section { padding: 32px 20px; background: var(--black); }
+    .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+    .service-card {
+      background: var(--black-2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 18px 14px;
+      transition: all 0.3s ease;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover { border-color: rgba(255,217,84,0.2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      width: 36px; height: 36px;
+      margin-bottom: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-icon svg {
+      width: 28px; height: 28px;
+      color: var(--gold);
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .service-name {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.3px; color: var(--white);
+      line-height: 1.4; margin-bottom: 5px;
+    }
+    .service-desc {
+      font-size: 10px; color: var(--grey);
+      line-height: 1.6; font-weight: 400;
+    }
+
+    /* ─── MAP SECTION ─── */
+    .map-section { padding: 32px 20px; background: var(--black-2); }
+    .map-wrap {
+      border-radius: 10px; overflow: hidden;
+      border: 1px solid rgba(255,217,84,0.2);
+      margin-top: 8px;
+    }
+    .map-wrap iframe { display: block; width: 100%; height: 220px; border: none; }
+    .address-box {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--black-3);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-top: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .address-box:hover { border-color: rgba(255,217,84,0.2); }
+    .address-box svg { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .address-text { font-size: 13px; color: var(--grey-light); line-height: 1.7; }
+    .address-text strong { color: var(--white); font-size: 10px; letter-spacing: 1.5px; font-weight: 700; display: block; margin-bottom: 4px; }
+
+    /* ─── HOURS ─── */
+    .hours-section {
+      padding: 28px 20px;
+      background: var(--black-3);
+      border-top: 1px solid rgba(255,217,84,0.12);
+    }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 13px;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: var(--grey-light); font-weight: 500; }
+    .hours-time { color: var(--gold); font-size: 12px; font-weight: 700; }
+    .hours-closed { color: var(--grey); font-size: 12px; font-weight: 500; }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      padding: 28px 20px;
+      background: var(--black);
+      text-align: center;
+      border-top: 1px solid rgba(255,217,84,0.15);
+    }
+    .footer-logo {
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px; font-weight: 800;
+      letter-spacing: 1px; color: var(--gold);
+      margin-bottom: 5px;
+    }
+    .footer-sub {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px; font-style: italic;
+      color: var(--grey); letter-spacing: 0.5px;
+      margin-bottom: 16px; font-weight: 400;
+    }
+    .footer-auth {
+      font-size: 10px; letter-spacing: 1.5px;
+      color: var(--grey); margin-bottom: 20px;
+      font-style: italic; font-weight: 500;
+    }
+    .footer-bottom-bar {
+      height: 4px; border-radius: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── BOTTOM STICKY - SAVE ONLY ─── */
+    .bottom-actions {
+      position: sticky; bottom: 0; z-index: 100;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,217,84,0.2);
+      padding: 12px 20px 14px;
+    }
+    .bottom-btn-primary {
+      width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 13px 8px;
+      border-radius: 6px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 2px; text-transform: uppercase;
+      border: none; cursor: pointer;
+      background: var(--gold); color: var(--black);
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(255,217,84,0.2);
+    }
+    .bottom-btn-primary:hover { background: var(--gold-light); transform: scale(1.015); }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-<div class="card">
 
-<div class="hero">
-  <div class="hero-logo-wrap"><?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 841.9 595.3">
-  <!-- Generator: Adobe Illustrator 29.7.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 8)  -->
-  <defs>
-    <style>
-      .st0 {
-        fill: #010201;
-      }
-
-      .st1 {
-        fill: #194c7f;
-      }
-
-      .st2 {
-        fill: #959798;
-      }
-
-      .st3 {
-        fill: #0b0c0c;
-      }
-
-      .st4 {
-        fill: #0a0b0b;
-      }
-
-      .st5 {
-        fill: #010101;
-      }
-    </style>
-  </defs>
-  <g>
-    <path class="st0" d="M192.1,437.1l26,24.2,2.4,2.2c.5.5,1,.8,1.5,1s1.3.2,2.5.2v2.4c-2.1-.2-3.9-.3-5.5-.3s-3.5,0-5.4.3l-26.2-24.9c-.9-.8-1.4-1.3-1.6-1.3-.5,0-.8.5-.8,1.5v11.6c0,5.7.1,8.8.3,9.3.4.9,1.8,1.4,4.1,1.4h2.9v2.4c-4.1-.2-7.8-.3-11-.3s-7,0-10.8.3v-2.4h3.1c2,0,3.2-.4,3.7-1.1.4-.7.6-4,.6-9.7v-25.5c0-7-.2-10.9-.6-11.8-.4-.9-1.6-1.3-3.7-1.3h-3.1v-2.4c4.7.2,8,.3,10.1.3s5.4,0,11.7-.3v2.4h-3c-1.7.2-2.8.4-3.3.8-.5.4-.7,1.2-.9,2.3s-.2,4.5-.2,10.1v10.3h.5c2.1-1.7,3.9-3.3,5.4-4.7,1.5-1.4,4-3.9,7.4-7.4l10.8-11.2v-2.7c2.8.2,5.1.3,6.9.3s4,0,6.3-.3v2.4h-2.1c-1.8,0-3.4.3-4.6,1-1.3.7-4.2,3.2-8.8,7.4l-14.5,13.4Z"/>
-    <path class="st0" d="M238.5,437.6l5-4.4c1.2-1.1,2.3-1.8,3.4-2.2,1.1-.4,2.5-.6,4.1-.6,2.8,0,5.3.6,7.3,1.7,2.1,1.1,3.5,2.6,4.3,4.3.8,1.8,1.2,4.8,1.2,9l-.2,11.3c0,2.5.1,4.5.3,6,0,.6.3,1.1.6,1.4.3.3,1.1.5,2.2.6l2.9.3v2.2c-2.5-.2-4.9-.3-7.2-.3s-4,0-6,.3c.5-6.4.7-12.6.7-18.8s-.3-6.9-.8-8.4c-.5-1.5-1.5-2.6-2.8-3.5s-3-1.3-5.1-1.3-4,.5-5.7,1.5c-1.7,1-2.9,2.2-3.6,3.5-.5.9-.7,3.2-.7,6.7v6.6c0,6,.1,9.4.4,10,.3.6,1.3,1,3,1.2l3.3.3v2.2c-4-.2-7.1-.3-9.6-.3s-5.8,0-9.9.3v-2.2l2.4-.3c1.5-.2,2.4-.4,2.8-.6.4-.2.6-.8.8-1.7.2-1.4.3-4.4.3-9.2v-25.7c0-6.8-.2-10.6-.5-11.4-.2-.6-1.3-.8-3.1-.8h-2.6v-2.3c3.9-.4,7.1-1,9.4-1.7l3.1-1.1c.4,0,.6.3.6.8v1.6c-.1,0-.3,6.8-.3,6.8-.1,3.4-.2,6.1-.2,8v10.2Z"/>
-    <path class="st0" d="M272.8,448.9c0-3.5.8-6.7,2.4-9.5,1.6-2.8,3.9-5,6.8-6.6,2.9-1.6,6.3-2.4,10-2.4,5.4,0,9.7,1.6,13,4.8,3.2,3.2,4.9,7.5,4.9,12.8s-2.1,11.3-6.4,15c-3.8,3.3-8.3,5-13.6,5s-9.2-1.7-12.4-5.1c-3.2-3.4-4.8-8-4.8-13.9ZM280,446.2c0,5.2,1.1,9.7,3.2,13.4,2.1,3.7,5.2,5.6,9.3,5.6s5.5-1.2,7.4-3.5c1.9-2.3,2.8-5.9,2.8-10.6s-.6-7.2-1.7-10c-1.1-2.8-2.6-4.9-4.4-6.1s-3.9-1.9-6.1-1.9-3.8.5-5.4,1.5c-1.6,1-2.8,2.4-3.6,4.1-1,2.3-1.6,4.8-1.6,7.5Z"/>
-    <path class="st0" d="M327.3,437.1l5.1-4.6c.8-.7,1.7-1.3,2.6-1.6,1.3-.5,2.6-.7,3.9-.7,2.9,0,5.2.5,6.9,1.5,1.7,1,3.3,2.9,4.8,5.5l4.9-4.5c.8-.8,1.9-1.3,3.1-1.8,1.6-.6,3.2-.8,4.6-.8,2.3,0,4.4.5,6.2,1.6,1.9,1.1,3.2,2.5,4.1,4.2.9,1.7,1.4,4,1.4,6.9l-.2,14.9c0,3.3.2,5.3.6,5.9.4.6,1.4.9,2.9,1h2.8v2.3h-1.8c-3-.2-5-.3-6-.3-1.6,0-3.5,0-5.6.3.4-4.7.5-10.2.5-16.5s-.2-8.8-.7-10.5-1.3-3-2.6-3.9c-1.3-.9-2.9-1.4-4.9-1.4s-4.1.6-5.7,1.8-2.5,2.6-2.9,4.3c-.3,1.1-.4,5.6-.4,13.5s0,7.4.1,8,.3,1.1.6,1.4c.3.3,1.4.5,3.3.7l2.5.3v2.2c-4.5-.2-7.8-.3-9.9-.3s-4.9,0-9.7.3v-2.2h2.5c1.5,0,2.5-.2,3-.6.5-.4.7-1.4.8-3,.2-4.2.3-8.5.3-13s-.3-6.8-.8-8.4c-.5-1.5-1.5-2.7-2.8-3.6-1.3-.9-2.9-1.3-4.7-1.3s-3.7.5-5.3,1.6c-1.6,1.1-2.7,2.4-3.3,4-.4,1.1-.6,4.1-.6,9.1s0,9.5.2,12c0,1.2.2,2,.6,2.3.3.3,1.4.6,3.3.8l2.6.3v2.2c-3.2-.2-6.2-.3-9-.3s-6.7,0-10.4.3v-2.2h2.9c1.6,0,2.6-.4,3-1.3.3-.9.5-5.7.5-14.3s0-10.1-.1-11.3c0-1.1-.3-1.9-.6-2.2-.4-.3-1.4-.5-3.2-.5h-2.4v-2.1c3.7-.5,6.9-1.2,9.6-2.1l2.8-1.1c.5,0,.7.3.7.9v1.4c-.2,1.4-.2,3-.2,4.7Z"/>
-    <path class="st0" d="M386.9,440.7v-2.5s0-2.6,0-2.6l4.1-2.4c1.9-1.1,3.5-1.8,4.9-2.2,1.4-.4,2.9-.6,4.5-.6,3.5,0,6.3.8,8.5,2.4,2.1,1.6,3.4,3.6,3.9,6,.3,1.8.5,6.3.6,13.6,0,6.8.2,10.6.5,11.3.3.7.9,1.1,1.9,1.1h3v2.5c-2.9-.2-4.9-.3-6.1-.3s-3.3,0-5.7.3v-3.4c0-1.1,0-2.2,0-3.3l-7.9,6c-.7.5-1.4.9-2.1,1.1-.7.2-1.6.3-2.9.3-3.3,0-5.8-.8-7.5-2.4-1.7-1.6-2.6-3.8-2.6-6.5s.6-4.8,1.8-6.7c1.2-1.9,3-3.3,5.3-4.2,2.3-.9,7.5-2.1,15.8-3.6,0-3.2-.8-5.6-2.1-7.2-1.7-2-4.2-3-7.4-3s-2.4.1-3.4.4c-1.1.3-2.1.7-3,1.3-.7,1.8-1.4,3.6-2,5.2l-2.1-.6ZM406.9,446.7c-7.1,1.5-11.5,2.9-13.4,4.3-1.9,1.3-2.9,3.4-2.9,6.2s.5,3.4,1.6,4.5,2.5,1.7,4.2,1.7,3.7-.5,5.5-1.6c1.7-1.1,3.4-2.6,5-4.7v-8.4c0,0,0-1.9,0-1.9Z"/>
-    <path class="st0" d="M426.2,455.5v2.5c0,2,.2,3.2.5,3.7.7.8,1.9,1.6,3.9,2.4s3.9,1.1,5.9,1.1,4.7-.7,6.4-2.1,2.5-3.1,2.5-5-.5-2.8-1.4-3.7-2.8-1.7-5.5-2.2c-5-1-8.4-1.9-10-2.7-1.6-.8-2.8-1.8-3.7-3-.8-1.3-1.2-2.8-1.2-4.6,0-3.4,1.2-6.1,3.7-8.2,2.5-2.1,5.9-3.2,10.4-3.2s7.1.7,10.6,2.1c-.2,1.7-.4,4.6-.5,8.7h-2.3c0-2.2-.3-3.7-.7-4.4-.6-.9-1.6-1.8-3.2-2.5-1.5-.8-3.2-1.1-4.9-1.1s-4.1.6-5.5,1.8c-1.4,1.2-2.1,2.7-2.1,4.4s.5,3,1.6,3.8c1.1.9,4.1,1.8,9.1,2.8,3.7.7,6.1,1.4,7.2,2.1,1.2.6,2.1,1.6,2.8,2.9.7,1.3,1.1,2.8,1.1,4.4,0,3.4-1.5,6.4-4.4,8.9-2.9,2.5-6.8,3.7-11.7,3.7s-6.6-.5-10.5-1.5c-.7-.2-1-.4-1-.8v-.5c.2-.4.3-1.1.4-2,.2-2.5.3-4.4.3-5.8v-1.8s2.3,0,2.3,0Z"/>
-    <path class="st1" d="M511.1,421.2l-11.3,23.5c-4.2,8.8-7.7,16.6-10.4,23.2h-1.5c-.9-2.3-3.6-8.1-8.1-17.4l-13.6-28.2v29.4c0,6.9.3,10.7.8,11.7.5.9,2.3,1.4,5.1,1.4h1.4v2.4c-3.5-.2-6.4-.3-8.6-.3s-4.8,0-9.6.3v-2.4h2.5c1.7,0,2.8-.2,3.3-.7.6-.5.9-1.4,1-2.6.3-3.6.5-7.4.5-11.5v-21.5c0-5.2-.1-8.6-.3-10.3-.1-.9-.5-1.5-1.1-2-.6-.5-1.9-.7-3.9-.7h-2v-2.4c4.4.2,7.2.3,8.3.3s3.5,0,6.2-.3c3.1,6.8,6.6,14.4,10.6,22.6l10,20.6,9.3-19.1c3.2-6.7,7-14.7,11.1-24.1,3.2.2,5.4.3,6.7.3s4.2,0,8.1-.3v2.4h-2.5c-2.2,0-3.6.4-4.1,1.2-.5.8-.7,3.6-.7,8.4v27.8c0,6.2.3,9.7.8,10.7.5.9,2,1.4,4.4,1.4h2.2v2.4c-3.5-.2-6.9-.3-10.1-.3s-7.3,0-11.2.3v-2.4h2.5c2,0,3.2-.4,3.6-1.3.4-.9.6-4.6.6-11.3v-30.9Z"/>
-    <path class="st1" d="M536.6,448.7c.1,5,1.4,8.8,3.8,11.4,2.4,2.6,5.6,3.9,9.6,3.9s3.5-.3,5.3-.9c1.7-.6,3.5-1.5,5.2-2.6l.6.6-1.2,3.2c-2.1,1.2-4.3,2.1-6.5,2.7-2.2.6-4.5.9-6.9.9-5.2,0-9.3-1.6-12.5-4.9-3.2-3.3-4.7-7.7-4.7-13.3s.9-8,2.7-11.1c1.2-2.1,3.3-4,6.5-5.7,3.1-1.8,6.2-2.6,9.2-2.6,4.5,0,8,1.3,10.7,4,2.6,2.6,3.9,6.3,3.9,11.1v2.2c-1.7.4-3.3.7-4.9.8-2.7.2-6.5.3-11.3.3h-9.5ZM536.7,445.8c3.9.2,8.3.3,13,.3s3.7,0,5.5-.3v-2.1c0-2.2-.4-4.4-1.3-6.4-.6-1.2-1.5-2.3-2.9-3.1-1.4-.8-3-1.2-4.8-1.2-2.8,0-5.1,1-6.8,3.1-1.7,2.1-2.6,5.3-2.6,9.7Z"/>
-    <path class="st1" d="M597,432.6v-13.8c0-1.6-.2-2.6-.5-3-.4-.4-1.2-.6-2.4-.6h-3.3v-2.3c4.5-.3,8.8-1.2,12.7-2.8l.7.5c-.2,2.6-.3,5.7-.5,9.4l-.2,10.1v3.3c0,0,0,22.7,0,22.7,0,4.2.1,6.6.4,7.1.4.7,1.4,1.1,3.2,1.4l2.7.3v2.2c-3.1-.2-5.9-.3-8.3-.3s-2,.1-4.8.3c.2-1.7.3-4.2.4-7.3-2.2,1.7-4.9,4-8.2,7-2.2.7-4.1,1.1-5.7,1.1-4.3,0-7.9-1.6-10.8-4.8-2.9-3.2-4.3-7.5-4.3-12.9s.6-6.3,1.7-8.6c1.1-2.4,2.4-4.1,4-5.2,1.5-1.1,4-2.4,7.2-4.1,2.5-1.2,4.8-1.9,7-1.9s2.9.2,4.5.6,3.1,1,4.7,1.8ZM597,439.2c-1.7-1.9-3.6-3.3-5.5-4.2s-3.9-1.4-5.9-1.4c-3.3,0-6,1.2-8,3.6-2,2.4-3,6-3,10.7s1.2,8.5,3.5,11.2c2.3,2.7,5.1,4.1,8.5,4.1s3.9-.6,5.6-1.7c1.7-1.1,2.9-2.6,3.7-4.4.8-1.8,1.2-4.6,1.2-8.5v-9.3Z"/>
-    <path class="st1" d="M626.5,430.2l.9.6c-.2,1.9-.3,4-.3,6.3-.2,7.4-.3,12.9-.3,16.4s.1,6.1.3,8.4c.1.9.3,1.5.7,1.9.4.4,1.3.6,2.7.8l2.6.3v2.2c-3.7-.2-7.1-.3-10.1-.3s-6,0-9.1.3v-2.2l3.3-.3c1.3-.1,2-.3,2.3-.7.3-.4.5-1.6.6-3.7.1-3.2.2-7.7.2-13.4s0-7-.2-9.1c0-.8-.3-1.3-.7-1.7-.4-.3-1.3-.5-2.6-.5h-2.9v-2.2c3.1-.5,5.4-.9,6.8-1.2s3.3-1,5.7-1.9ZM623.5,413.3c1.2,0,2.2.4,3,1.3.8.8,1.3,1.9,1.3,3.1s-.4,2.2-1.3,3c-.8.8-1.8,1.3-3,1.3s-2.2-.4-3-1.3-1.3-1.9-1.3-3,.4-2.2,1.3-3.1c.8-.8,1.9-1.3,3-1.3Z"/>
-    <path class="st1" d="M640.2,440.7v-2.5s0-2.6,0-2.6l4.1-2.4c1.9-1.1,3.5-1.8,4.9-2.2,1.4-.4,2.9-.6,4.5-.6,3.5,0,6.3.8,8.5,2.4s3.4,3.6,3.9,6c.3,1.8.5,6.3.6,13.6,0,6.8.2,10.6.5,11.3.3.7.9,1.1,1.9,1.1h3v2.5c-2.9-.2-4.9-.3-6.1-.3s-3.3,0-5.7.3v-3.4c0-1.1,0-2.2,0-3.3l-7.9,6c-.7.5-1.4.9-2.1,1.1-.7.2-1.6.3-2.9.3-3.3,0-5.8-.8-7.5-2.4-1.7-1.6-2.6-3.8-2.6-6.5s.6-4.8,1.8-6.7c1.2-1.9,3-3.3,5.3-4.2,2.3-.9,7.5-2.1,15.8-3.6,0-3.2-.8-5.6-2.1-7.2-1.7-2-4.2-3-7.4-3s-2.4.1-3.4.4c-1.1.3-2.1.7-3,1.3-.7,1.8-1.4,3.6-2,5.2l-2.1-.6ZM660.3,446.7c-7.1,1.5-11.5,2.9-13.4,4.3-1.9,1.3-2.9,3.4-2.9,6.2s.5,3.4,1.6,4.5,2.5,1.7,4.2,1.7,3.7-.5,5.5-1.6c1.7-1.1,3.4-2.6,5-4.7v-8.4c0,0,0-1.9,0-1.9Z"/>
-  </g>
-  <g>
-    <path class="st3" d="M527.8,340.1c-22.1,22.2-52.8,35.9-86.6,35.9s-65.1-14-87.3-36.6c-21.7-22.1-35.1-52.4-35.1-85.8s13.7-64.4,35.9-86.6h0s16,16,16,16l-16-16c22.1-22.1,52.7-35.8,86.4-35.8s63.7,13.4,85.8,35.1h0s19.2-19.1,19.2-19.1h0c-27-26.6-64-43.1-104.9-43.1s-78.6,16.7-105.6,43.7h0c-27.1,27.1-43.8,64.5-43.8,105.8s16.4,78,43,104.9c27.1,27.5,64.8,44.5,106.4,44.5s78.7-16.7,105.7-43.8l-19.2-19.2Z"/>
-    <path class="st4" d="M563.6,253.6c0,33.8-13.7,64.3-35.8,86.5-22.1,22.2-52.8,35.9-86.6,35.9s-65.1-14-87.3-36.6l16-16c18.1,18.5,43.3,29.9,71.2,29.9s52.5-11.2,70.6-29.2h0s0,0,0,0c18-18,29.2-43,29.2-70.5s-11.5-53.1-29.9-71.2h0c-18-17.6-42.6-28.5-69.8-28.5s-52.4,11.1-70.4,29.1l-16-16c22.1-22.1,52.7-35.8,86.4-35.8s63.7,13.4,85.8,35.1h0c22.6,22.2,36.6,53.1,36.6,87.3Z"/>
-    <path class="st1" d="M547,359.3c-27.1,27.1-64.4,43.8-105.7,43.8s-79.3-17-106.4-44.5c-26.6-27-43-64-43-104.9s16.7-78.7,43.8-105.7h0c27.1-27.1,64.4-43.7,105.6-43.7s78,16.4,104.9,43.1h0s-19.2,19.2-19.2,19.2c-22.1-21.7-52.4-35.1-85.8-35.1s-64.3,13.7-86.4,35.8h0c-22.2,22.2-35.9,52.8-35.9,86.6s13.4,63.7,35.1,85.8c22.2,22.6,53.1,36.6,87.3,36.6s64.4-13.7,86.6-35.9l19.2,19.2Z"/>
-    <polygon class="st3" points="546.2 147.2 527 166.4 527 166.4 546.2 147.2"/>
-    <path class="st2" d="M511,182.4h0c-18-17.6-42.6-28.5-69.8-28.5s-52.4,11.1-70.4,29.1c0,0,0,0,0,0h0c-18.1,18.1-29.2,43-29.2,70.6s10.9,51.8,28.5,69.8c18.1,18.5,43.3,29.9,71.2,29.9s52.5-11.2,70.6-29.2h0s0,0,0,0c18-18,29.2-43,29.2-70.5s-11.5-53.1-29.9-71.2ZM499.5,311.7h0c-14.9,14.9-35.5,24.1-58.2,24.1s-43.9-9.5-58.9-24.8c-14.5-14.8-23.4-35.1-23.4-57.4s9.2-43.3,24.1-58.2c0,0,0,0,0,0h0c14.9-14.9,35.4-24,58.1-24s42.6,8.9,57.4,23.4h0c15.3,14.9,24.8,35.8,24.8,58.9s-9.2,43.2-24,58.1Z"/>
-    <polygon class="st3" points="370.8 183.1 354.8 167 354.8 167 370.8 183.1"/>
-    <g>
-      <path class="st1" d="M422.5,236.7h0s0,0,0,0c.2-3.1.3-6.1.3-9.2,0-1.8,0-4-1.4-5.3-2.4-1.8-5.6-1.9-8.4-2.3-.2-1,0-2.1,0-3.2,5.2,0,10.4,0,15.6,0,1.2,0,2.4-.1,3.6,0,3,6.7,5.9,13.3,8.9,20,4.5,10,9,20,13.5,30,1.1,2.3,2,4.7,3.2,6.9,8-17.2,16-34.5,24.1-51.7.9-1.7,1.6-3.5,2.4-5.2,6.4,0,12.7,0,19.1,0,0,1.1,0,2.2,0,3.3-2.2.2-4.3.5-6.4,1.2-1.2.4-2.3,1.2-2.8,2.4-.5,1.2-.6,2.5-.5,3.8-.2,2.8-.1,5.7,0,8.5.2,3.7,0,7.5.1,11.2.2,9.6.2,19.3.5,28.9,0,2,0,4.1.3,6.1.2,1.1.5,2.2,1.4,3,1.2,1,2.7,1.3,4.2,1.5,1.2.2,2.3.4,3.5.4,0,1.1,0,2.1,0,3.2-9.4,0-18.8,0-28.3,0,0-1.1,0-2.1,0-3.2,1.2,0,2.3-.3,3.5-.4,1.5-.3,3.2-.6,4.2-1.8,1.1-1.6,1-3.6,1.2-5.4,0-6.1,0-12.2,0-18.4,0-6.7,0-13.3-.2-20-.1-4.4,0-8.7,0-13.1-1.1,2.8-2.4,5.5-3.6,8.2-8,17.9-16.1,35.7-24,53.6-.9,0-1.8,0-2.7,0-.2-.2-.3-.5-.4-.8-5.6-12.9-11.1-25.8-16.6-38.7-1.4-3.3-2.8-6.6-4.3-9.9h0l-1.5-3.6h0s0,0,0,0v-.3c-1.1-2.3-2.1-4.7-3.1-7,0-.2-.2-.4-.2-.6-.1,2.6-.4,5.2-.5,7.8h-4.5Z"/>
-      <path class="st5" d="M436.6,290.1c-4.9,0-9.9,0-14.8,0l-3.5-5.2h0c-4.7-7.4-9.6-14.6-14.3-22-1.8,1.8-3.6,3.8-5.4,5.7,0,3.4,0,6.7,0,10.1.2,1.8,0,3.7.8,5.5.3.8,1.1,1.1,1.8,1.3,1.7.7,3.6.7,5.5,1,0,1.2,0,2.5,0,3.7-8.4,0-16.9,0-25.3,0,0-1.2,0-2.5,0-3.7,2.2-.3,4.5-.4,6.4-1.4,1-.6,1.1-1.9,1.3-3,0-1.1.3-2.1.3-3.2,0-19,0-38.1,0-57.1,0-.8-.2-1.5-.3-2.3,0-.7-.3-1.5-1-1.8-2.1-1-4.4-1-6.6-1.4,0-1.1,0-2.3,0-3.4,4.9-.9,9.8-1.9,14.5-3.6l2.8,1.7c0,.2,0,.3,0,.5,0,2.4-.2,4.9-.2,7.3,0,14.4,0,28.7,0,43.1,1.3-1.3,2.6-2.7,3.9-4.1,1-1.2,2.1-2.1,3.1-3.3,2.6-2.9,5.3-5.8,7.8-8.9.7-.9,1.4-1.8,1.7-2.9.1-.5-.4-.8-.8-1-1.6-.7-3.4-.9-5.2-1.2,0-1.3,0-2.5,0-3.8h21.7s0,0,0,0h0l1.5,3.6h0s0,0,0,0c-.3,0-.5,0-.8.1-1.5.2-3.4.5-4.7.9-1.8.6-3.3,1.4-4.5,2.3-.3.2-.7.5-1,.7h0c-.8.7-1.6,1.4-2.3,2.1-3.1,3.3-6.2,6.6-9.2,10,3.5,5.1,7,10.2,10.5,15.4l.3.4,5.2,7.5s0,0,0,0h0c0,.2.2.3.2.4h0c0,.2.2.2.2.3,1.4,1.8,2.8,3.7,4.9,4.7,1.6.8,3.4,1.1,5.2,1.3,0,1.2,0,2.5,0,3.7Z"/>
-      <path class="st1" d="M426.8,241.3c0,1.1,0,2.1,0,3.2-.3,2.3,0,4.6-.3,6.9-.2,9.3-.7,18.5-.5,27.8,0,.2,0,.4.1.6l-5.2-7.5c.4-7.7.9-15.4,1.3-23.1.2-1.8.1-3.7.3-5.5,1.2-.8,2.7-1.6,4.5-2.3Z"/>
-      <path class="st1" d="M411.4,290.1c0-1-.2-2.1,0-3.1,2.3-.4,5-.4,6.9-2.1l3.5,5.2c-3.5,0-7,0-10.5,0Z"/>
-    </g>
-  </g>
-</svg></div>
-  <h1>Martin N Kanyangela</h1>
-  <div class="hero-title">Director · Khomas Media</div>
-  <div class="hero-wave">
-    <svg viewBox="0 0 420 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-      <path d="M0,20 C80,40 140,0 210,20 C280,40 340,0 420,20 L420,40 L0,40 Z" fill="#fff"/>
+<!-- PRELOADER -->
+<div id="preloader">
+  <!-- Mini version of the full logo SVG for preloader -->
+  <div class="preloader-logo-wrap">
+    <svg viewBox="77.9 137 680 330" xmlns="http://www.w3.org/2000/svg">
+      <defs><style>.st0{fill:#ffd754;}.st1{fill:#ffffff;}</style></defs>
+      <polygon class="st0" points="89 318.7 77.9 318.7 126.5 270.2 175.3 318.7 163.9 318.7 126.5 281.3 89 318.7"/>
+      <rect class="st0" x="77.9" y="323.8" width="97" height="7.8"/>
+      <path class="st0" d="M126.5,385.7c-12.6,0-24.4-4.3-33.2-12.1-10-8.9-15.2-21.4-15.2-36.4h7.8c0,27.9,21.1,40.6,40.6,40.6s40.6-12.7,40.6-40.6h7.8c0,31.8-24.4,48.5-48.5,48.5Z"/>
+      <path class="st0" d="M126.5,369.7c-16.1,0-32.5-11.2-32.5-32.5h7.8c0,16.9,12.8,24.6,24.6,24.6s24.6-7.7,24.6-24.6h7.8c0,21.3-16.3,32.5-32.5,32.5Z"/>
+      <path class="st0" d="M126.5,353.6c-8.1,0-16.4-5.6-16.4-16.4h7.8c0,5.9,4.3,8.5,8.5,8.5s8.5-2.6,8.5-8.5h7.8c0,10.7-8.2,16.4-16.4,16.4Z"/>
+      <rect class="st0" x="122.5" y="178.4" width="7.8" height="96.8"/>
+      <path class="st0" d="M126.5,182.3c-8.5,0-15.4-6.9-15.4-15.4s6.9-15.4,15.4-15.4,15.4,6.9,15.4,15.4-6.9,15.4-15.4,15.4ZM126.5,159.4c-4.2,0-7.6,3.4-7.6,7.6s3.4,7.6,7.6,7.6,7.6-3.4,7.6-7.6-3.4-7.6-7.6-7.6Z"/>
+      <path class="st0" d="M223.5,203.4c-15.8-3.1-28.8-8.2-38.7-15-24.1-16.6-49.3-10.9-49.6-10.9l-1.8-7.6c1.2-.3,28.9-6.5,55.8,12.1,9,6.2,21,10.8,35.7,13.7l-1.5,7.7Z"/>
+      <path class="st0" d="M226.7,189.6c-16.2-3.1-29.6-8.2-39.6-15.2-24.1-16.6-49.3-10.9-49.6-10.9l-1.8-7.6c1.2-.3,28.9-6.5,55.8,12.1,9.2,6.3,21.5,11,36.7,13.9l-1.5,7.7Z"/>
+      <path class="st0" d="M253.6,223.5h-16.7l-14.4-13.4v-35.5h31.1v49ZM240,215.6h5.7v-33.3h-15.4v24.3l9.6,9Z"/>
+      <rect class="st0" x="238.1" y="230.7" width="7.8" height="185.6"/>
+      <polygon class="st0" points="291.9 444.3 269.2 444.3 269.2 431.6 212.8 431.6 212.8 444.3 190.2 444.3 190.2 436.5 205 436.5 205 423.8 277.1 423.8 277.1 436.5 291.9 436.5 291.9 444.3"/>
+      <polygon class="st0" points="337.9 458.2 255 458.2 255 445.5 227 445.5 227 458.2 144.1 458.2 144.1 450.3 219.7 450.3 219.7 437.6 262.3 437.6 262.3 450.3 337.9 450.3 337.9 458.2"/>
+      <path class="st0" d="M239.1,167.9c-8.5,0-15.4-6.9-15.4-15.4s6.9-15.4,15.4-15.4,15.4,6.9,15.4,15.4-6.9,15.4-15.4,15.4ZM239.1,145c-4.2,0-7.6,3.4-7.6,7.6s3.4,7.6,7.6,7.6,7.6-3.4,7.6-7.6-3.4-7.6-7.6-7.6Z"/>
+      <path class="st0" d="M333.2,194.4c0-2.8-1.1-5.4-3.3-7.8-3.4-3.5-7.8-5.2-13.3-5.2s-7.3,1-10.4,2.9c-4.1,2.6-6.2,5.9-6.2,10.1s.4,2.4,1.1,3.5c1.7,2.5,6,5.1,13,7.8,7.8,3.1,12.5,5,14.1,5.7,7.1,3.5,10.6,7.7,10.6,12.6,0,3.8-1.7,7.2-5,10.4-4.5,4.2-10.2,6.3-17.2,6.3s-11-1.5-15.3-4.6c-4.6-3.3-6.8-7.3-6.8-12h3.7c0,2.9,1.3,5.5,3.8,7.9,3.8,3.4,8.7,5.1,14.7,5.1s8.3-1,11.8-3.1c4.4-2.6,6.7-5.9,6.7-9.9s-.4-2.5-1.2-3.7c-1.7-2.5-6-5.1-13-7.9-7.8-3-12.5-4.9-14-5.6-7.1-3.5-10.6-7.6-10.6-12.4s1.4-7.2,4.3-10.3c4.1-4.3,9.4-6.4,16-6.4s9.8,1.4,13.7,4.3c4.4,3.3,6.7,7.4,6.7,12.3h-3.7Z"/>
+      <path class="st0" d="M349.8,177.9h3.9v1.8c0,0-.2,40.6-.2,40.6,0,3.9,1.4,7.5,4.2,10.5,3.7,4.1,8.5,6.1,14.3,6.1s8.4-1.3,11.9-3.9c4.4-3.3,6.6-7.6,6.6-12.8v-42.4h3.9v1.8c0,0-.2,40.6-.2,40.6,0,5.1-1.8,9.5-5.5,13.4-4.4,4.6-10,6.9-16.7,6.9s-10.8-1.8-15.1-5.4c-4.7-4.1-7.1-9.1-7.1-15v-42.4Z"/>
+      <path class="st0" d="M444.1,194.4c0-2.8-1.1-5.4-3.3-7.8-3.4-3.5-7.8-5.2-13.3-5.2s-7.3,1-10.4,2.9c-4.1,2.6-6.2,5.9-6.2,10.1s.4,2.4,1.1,3.5c1.7,2.5,6,5.1,13,7.8,7.8,3.1,12.5,5,14.1,5.7,7.1,3.5,10.6,7.7,10.6,12.6,0,3.8-1.7,7.2-5,10.4-4.5,4.2-10.2,6.3-17.2,6.3s-11-1.5-15.3-4.6c-4.6-3.3-6.8-7.3-6.8-12h3.7c0,2.9,1.3,5.5,3.8,7.9,3.8,3.4,8.7,5.1,14.7,5.1s8.3-1,11.8-3.1c4.4-2.6,6.7-5.9,6.7-9.9s-.4-2.5-1.2-3.7c-1.7-2.5-6-5.1-13-7.9-7.8-3-12.5-4.9-14-5.6-7.1-3.5-10.6-7.6-10.6-12.4s1.4-7.2,4.3-10.3c4.1-4.3,9.4-6.4,16-6.4s9.8,1.4,13.7,4.3c4.4,3.3,6.7,7.4,6.7,12.3h-3.7Z"/>
+      <path class="st0" d="M458.2,240.6h-4.1l1.2-2.6,25.9-59.2.5-1.1h2.4l.5,1.1,25.9,59.2,1.2,2.6h-4.1l-.5-1.1-24.2-55.3-24.2,55.3-.5,1.1Z"/>
+      <path class="st0" d="M525.4,240.6h-3.7v-62.9h2.8l.6.7,39.1,54.5v-53.4c0,0,0-1.8,0-1.8h3.7v61c0,0,0,1.8,0,1.8h-2.8l-.6-.7-39.1-54.5v55.3Z"/>
+      <path class="st0" d="M303.6,331.7h-3.7v-62.9h2.8l.6.7,39.1,54.5v-53.4c0,0,0-1.8,0-1.8h3.7v61c0,0,0,1.8,0,1.8h-2.8l-.6-.7-39.1-54.5v55.3Z"/>
+      <path class="st0" d="M380.5,329.8v1.8h-3.7v-30.9l-19.3-29.1-1.8-2.9h4.4l.6.8,18,27.3,17.7-27.3.6-.8h4.4l-1.8,2.9-19,29.1v29Z"/>
+      <path class="st0" d="M406.5,331.7h-4.1l1.2-2.6,25.9-59.2.5-1.1h2.4l.5,1.1,25.9,59.2,1.2,2.6h-4.1l-.5-1.1-24.2-55.3-24.2,55.3-.5,1.1Z"/>
+      <path class="st0" d="M507,268.8h1.8v3.7h-22.1v59.2h-3.7v-59.2h-22.3v-3.7h46.2Z"/>
+      <path class="st0" d="M522.8,277.7c5.4-5.9,11.9-8.9,19.3-8.9s13.9,3,19.3,8.9c5.6,6.2,8.4,13.7,8.4,22.6s-2.8,16.4-8.4,22.6c-5.4,5.9-11.9,8.9-19.3,8.9-7.5,0-13.9-3-19.3-8.9-5.6-6.2-8.4-13.7-8.4-22.6s2.8-16.4,8.4-22.6ZM525,319.6c4.7,5.5,10.4,8.3,17.1,8.3s11.8-2.5,16.5-7.6c5.1-5.5,7.6-12.2,7.6-20.2s-2.3-14-6.9-19.4c-4.7-5.5-10.4-8.3-17.1-8.3-6.3,0-11.8,2.6-16.5,7.6-5.1,5.5-7.6,12.2-7.6,20.2s2.3,14,6.9,19.4Z"/>
+      <path class="st0" d="M586.5,331.7h-3.7v-62.9h2.8l.6.7,39.1,54.5v-53.4c0,0,0-1.8,0-1.8h3.7v61c0,0,0,1.8,0,1.8h-2.8l-.6-.7-39.1-54.5v55.3Z"/>
+      <path class="st0" d="M645.6,331.7v-62.9h24.2c6.9.7,12.7,3.9,17.4,9.5,5.1,6.2,7.2,13.5,6.5,21.9.7,8.1-1.4,15.3-6.2,21.5-4.7,6-10.6,9.3-17.7,9.9h-24.2ZM669.6,328c5.8-.6,10.7-3.3,14.7-8.1,4.4-5.5,6.3-12.1,5.7-19.6v-.2c.6-6.9-1.1-13-4.9-18.4-4-5.5-9.2-8.6-15.5-9.2h-20.2v55.5h20.2Z"/>
+      <path class="st0" d="M711.3,277.7c5.4-5.9,11.9-8.9,19.3-8.9s13.9,3,19.3,8.9c5.6,6.2,8.4,13.7,8.4,22.6s-2.8,16.4-8.4,22.6c-5.4,5.9-11.9,8.9-19.3,8.9-7.5,0-13.9-3-19.3-8.9-5.6-6.2-8.4-13.7-8.4-22.6s2.8-16.4,8.4-22.6ZM713.6,319.6c4.7,5.5,10.4,8.3,17.1,8.3s11.8-2.5,16.5-7.6c5.1-5.5,7.6-12.2,7.6-20.2s-2.3-14-6.9-19.4c-4.7-5.5-10.4-8.3-17.1-8.3-6.3,0-11.8,2.6-16.5,7.6-5.1,5.5-7.6,12.2-7.6,20.2s2.3,14,6.9,19.4Z"/>
+      <!-- White text row -->
+      <path class="st1" d="M301.9,356.6h1.9v33h-1.9v-33Z"/>
+      <path class="st1" d="M314.2,389.6h-1.9v-33h1.5l.3.4,20.5,28.6v-28.1s0-1,0-1h1.9v32s0,1,0,1h-1.5l-.3-.4-20.5-28.6v29Z"/>
+      <path class="st1" d="M369.4,382.6c-.7,1.2-1.6,2.3-2.9,3.3-2.9,2.4-6.1,3.6-9.6,3.6-3.9,0-7.3-1.6-10.1-4.7-2.9-3.2-4.4-7.2-4.4-11.8s1.5-8.6,4.4-11.8c2.8-3.1,6.2-4.7,10.1-4.7s4.4.5,6.5,1.6c2.8,1.4,4.8,3.3,5.9,5.5l-1.7.9c-.6-1-1.4-2-2.4-3-2.5-2-5.2-3.1-8.3-3.1-3.3,0-6.2,1.4-8.7,4-2.6,2.9-3.9,6.4-3.9,10.6s1.2,7.3,3.6,10.1c2.5,2.9,5.5,4.4,9,4.4s3.4-.4,5.1-1.1c2.6-1.2,4.5-2.8,5.7-4.9l1.7,1Z"/>
+      <path class="st1" d="M377.8,361.3c2.8-3.1,6.2-4.7,10.1-4.7s7.3,1.6,10.1,4.7c2.9,3.2,4.4,7.2,4.4,11.8s-1.5,8.6-4.4,11.8c-2.8,3.1-6.2,4.7-10.1,4.7-3.9,0-7.3-1.6-10.1-4.7-2.9-3.2-4.4-7.2-4.4-11.8s1.5-8.6,4.4-11.8ZM379,383.3c2.5,2.9,5.5,4.4,9,4.4s6.2-1.3,8.6-4c2.7-2.9,4-6.4,4-10.6s-1.2-7.3-3.6-10.2c-2.5-2.9-5.5-4.4-9-4.4-3.3,0-6.2,1.4-8.6,4-2.7,2.9-4,6.4-4,10.6s1.2,7.3,3.6,10.2Z"/>
+      <path class="st1" d="M427.5,375c2,2.3,4,6.7,6,13.4l.4,1.3h-2l-.2-.7c-1.4-4.6-2.7-8-3.9-10.2-1-1.8-2.4-3.4-4.2-4.7h-12.3v15.5h-1.9v-32s0-1,0-1h14.5c2.4,0,4.5.6,6.4,2,2.3,1.8,3.4,4,3.4,6.7s-.4,2.7-1.1,4c-1.4,2.3-3.4,3.8-6.2,4.4.4.4.8.7,1.2,1.2ZM423.9,372.1c1.7,0,3.3-.5,4.8-1.4,2-1.4,3-3.1,3-5.3s-.5-2.8-1.6-4.1c-1.6-1.8-3.6-2.8-6.3-2.8h-12.6v13.6h5.9s0,0,0,0h6.7Z"/>
+      <path class="st1" d="M440.4,373.1v-15.5s0-1,0-1h14.5c2.4,0,4.5.7,6.3,2.1,2.3,1.7,3.4,4,3.4,6.6s-.7,3.9-2.2,5.5c-1.9,2.1-4.4,3.2-7.5,3.2h-12.6v15.5h-1.9v-16.5ZM455,372.1c1.7,0,3.3-.5,4.8-1.4,2-1.4,3-3.1,3-5.3s-.5-2.9-1.6-4.1c-1.6-1.8-3.6-2.7-6.2-2.7h-12.6v13.6h12.6Z"/>
+      <path class="st1" d="M473,361.3c2.8-3.1,6.2-4.7,10.1-4.7s7.3,1.6,10.1,4.7c2.9,3.2,4.4,7.2,4.4,11.8s-1.5,8.6-4.4,11.8c-2.8,3.1-6.2,4.7-10.1,4.7-3.9,0-7.3-1.6-10.1-4.7-2.9-3.2-4.4-7.2-4.4-11.8s1.5-8.6,4.4-11.8ZM474.1,383.3c2.5,2.9,5.5,4.4,9,4.4s6.2-1.3,8.6-4c2.7-2.9,4-6.4,4-10.6s-1.2-7.3-3.6-10.2c-2.5-2.9-5.5-4.4-9-4.4-3.3,0-6.2,1.4-8.6,4-2.7,2.9-4,6.4-4,10.6s1.2,7.3,3.6,10.2Z"/>
+      <path class="st1" d="M522.7,375c2,2.3,4,6.7,6,13.4l.4,1.3h-2l-.2-.7c-1.4-4.6-2.7-8-3.9-10.2-1-1.8-2.4-3.4-4.2-4.7h-12.3v15.5h-1.9v-32s0-1,0-1h14.5c2.4,0,4.5.6,6.4,2,2.3,1.8,3.4,4,3.4,6.7s-.4,2.7-1.1,4c-1.4,2.3-3.4,3.8-6.2,4.4.4.4.8.7,1.2,1.2ZM519,372.1c1.7,0,3.3-.5,4.8-1.4,2-1.4,3-3.1,3-5.3s-.5-2.8-1.6-4.1c-1.6-1.8-3.6-2.8-6.3-2.8h-12.6v13.6h5.9s0,0,0,0h6.7Z"/>
+      <path class="st1" d="M533.2,389.6h-2.1l.6-1.4,13.6-31.1.2-.6h1.3l.2.6,13.6,31.1.6,1.4h-2.1l-.2-.6-12.7-29-12.7,29-.2.6Z"/>
+      <path class="st1" d="M586,356.6h1v1.9h-11.6v31.1h-1.9v-31.1h-11.7v-1.9h24.3Z"/>
+      <path class="st1" d="M615.1,356.6v1.9h-21.4v13.6h15.6v1.9h-15.6v13.6h21.4v1.9h-23.3v-33h23.3Z"/>
+      <path class="st1" d="M621.9,389.6v-33h12.7c3.6.4,6.7,2,9.1,5,2.7,3.3,3.8,7.1,3.4,11.5.4,4.2-.7,8-3.3,11.3-2.5,3.1-5.6,4.9-9.3,5.2h-12.7ZM634.5,387.7c3-.3,5.6-1.7,7.7-4.3,2.3-2.9,3.3-6.3,3-10.3h0c.3-3.7-.6-6.9-2.6-9.8-2.1-2.9-4.8-4.5-8.2-4.8h-10.6v29.1h10.6Z"/>
     </svg>
   </div>
+  <div class="preloader-text">Susan Nyatondo Inc.</div>
+  <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
 </div>
 
-<div class="actions">
-  <a href="tel:+264812113946" class="action-btn primary">
-    <div class="btn-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="white"/></svg></div>
-    <span class="label">Call</span>
-  </a>
-  <a href="mailto:martin@khomasmedia.com" class="action-btn secondary">
-    <div class="btn-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#194c7f"/></svg></div>
-    <span class="label">Email</span>
-  </a>
-  <a href="https://wa.me/264812113946" class="action-btn secondary">
-    <div class="btn-icon"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#194c7f"/></svg></div>
-    <span class="label">WhatsApp</span>
-  </a>
-</div>
+<!-- PARTICLES -->
+<div id="particles"></div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="#194c7f"/></svg></div>
-    <h2>Phone Numbers</h2>
-  </div>
-  <a href="tel:+264812113946" class="contact-row">
-    <div class="row-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="white"/></svg></div>
-    <div class="row-content"><div class="row-label">Mobile · Primary</div><div class="row-value">+264812113946</div></div>
-    <div class="row-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#cbd5e0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  </a>
-    <a href="tel:+264811409705" class="contact-row">
-    <div class="row-icon pale"><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="#194c7f"/></svg></div>
-    <div class="row-content"><div class="row-label">Mobile · Secondary</div><div class="row-value">+264811409705</div></div>
-    <div class="row-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#cbd5e0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  </a>
-</div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-top-bar"></div>
+  <div class="hero-geo"></div>
+  <div class="hero-lines"></div>
 
-<div class="section">
-  <div class="section-header">
-    <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#194c7f"/></svg></div>
-    <h2>Email Addresses</h2>
-  </div>
-  <a href="mailto:martin@khomasmedia.com" class="contact-row">
-    <div class="row-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="white"/></svg></div>
-    <div class="row-content"><div class="row-label">Personal</div><div class="row-value">martin@khomasmedia.com</div></div>
-    <div class="row-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#cbd5e0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  </a>
-  <a href="mailto:info@khomasmedia.com" class="contact-row">
-    <div class="row-icon pale"><svg viewBox="0 0 24 24" fill="none"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#194c7f"/></svg></div>
-    <div class="row-content"><div class="row-label">Company</div><div class="row-value">info@khomasmedia.com</div></div>
-    <div class="row-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="#cbd5e0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-  </a>
-</div>
+  <div class="hero-inner">
 
-<div class="section">
-  <div class="section-header">
-    <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#194c7f"/></svg></div>
-    <h2>Office Address</h2>
-  </div>
-  <div class="address-box">
-    <div class="addr-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="white"/></svg></div>
-    <div class="address-text">
-      <strong>Location</strong>
-      No. 354, Otjitenda Street<br/>
-      Prosperita, Windhoek<br/>
-      Namibia
+    <!-- Full logo display -->
+    <div class="logo-wrap" style="animation: fadeDown 0.8s ease both; animation-delay: 0.2s;">
+      <svg viewBox="77.9 137 680 330" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .lst0 { fill: #FFD954; }
+            .lst1 { fill: #FFFFFF; }
+          </style>
+        </defs>
+        <!-- Symbol -->
+        <polygon class="lst0" points="89 318.7 77.9 318.7 126.5 270.2 175.3 318.7 163.9 318.7 126.5 281.3 89 318.7"/>
+        <rect class="lst0" x="77.9" y="323.8" width="97" height="7.8"/>
+        <path class="lst0" d="M126.5,385.7c-12.6,0-24.4-4.3-33.2-12.1-10-8.9-15.2-21.4-15.2-36.4h7.8c0,27.9,21.1,40.6,40.6,40.6s40.6-12.7,40.6-40.6h7.8c0,31.8-24.4,48.5-48.5,48.5Z"/>
+        <path class="lst0" d="M126.5,369.7c-16.1,0-32.5-11.2-32.5-32.5h7.8c0,16.9,12.8,24.6,24.6,24.6s24.6-7.7,24.6-24.6h7.8c0,21.3-16.3,32.5-32.5,32.5Z"/>
+        <path class="lst0" d="M126.5,353.6c-8.1,0-16.4-5.6-16.4-16.4h7.8c0,5.9,4.3,8.5,8.5,8.5s8.5-2.6,8.5-8.5h7.8c0,10.7-8.2,16.4-16.4,16.4Z"/>
+        <rect class="lst0" x="122.5" y="178.4" width="7.8" height="96.8"/>
+        <path class="lst0" d="M126.5,182.3c-8.5,0-15.4-6.9-15.4-15.4s6.9-15.4,15.4-15.4,15.4,6.9,15.4,15.4-6.9,15.4-15.4,15.4ZM126.5,159.4c-4.2,0-7.6,3.4-7.6,7.6s3.4,7.6,7.6,7.6,7.6-3.4,7.6-7.6-3.4-7.6-7.6-7.6Z"/>
+        <path class="lst0" d="M223.5,203.4c-15.8-3.1-28.8-8.2-38.7-15-24.1-16.6-49.3-10.9-49.6-10.9l-1.8-7.6c1.2-.3,28.9-6.5,55.8,12.1,9,6.2,21,10.8,35.7,13.7l-1.5,7.7Z"/>
+        <path class="lst0" d="M226.7,189.6c-16.2-3.1-29.6-8.2-39.6-15.2-24.1-16.6-49.3-10.9-49.6-10.9l-1.8-7.6c1.2-.3,28.9-6.5,55.8,12.1,9.2,6.3,21.5,11,36.7,13.9l-1.5,7.7Z"/>
+        <path class="lst0" d="M253.6,223.5h-16.7l-14.4-13.4v-35.5h31.1v49ZM240,215.6h5.7v-33.3h-15.4v24.3l9.6,9Z"/>
+        <rect class="lst0" x="238.1" y="230.7" width="7.8" height="185.6"/>
+        <polygon class="lst0" points="291.9 444.3 269.2 444.3 269.2 431.6 212.8 431.6 212.8 444.3 190.2 444.3 190.2 436.5 205 436.5 205 423.8 277.1 423.8 277.1 436.5 291.9 436.5 291.9 444.3"/>
+        <polygon class="lst0" points="337.9 458.2 255 458.2 255 445.5 227 445.5 227 458.2 144.1 458.2 144.1 450.3 219.7 450.3 219.7 437.6 262.3 437.6 262.3 450.3 337.9 450.3 337.9 458.2"/>
+        <path class="lst0" d="M239.1,167.9c-8.5,0-15.4-6.9-15.4-15.4s6.9-15.4,15.4-15.4,15.4,6.9,15.4,15.4-6.9,15.4-15.4,15.4ZM239.1,145c-4.2,0-7.6,3.4-7.6,7.6s3.4,7.6,7.6,7.6,7.6-3.4,7.6-7.6-3.4-7.6-7.6-7.6Z"/>
+        <!-- SU AN text -->
+        <path class="lst0" d="M333.2,194.4c0-2.8-1.1-5.4-3.3-7.8-3.4-3.5-7.8-5.2-13.3-5.2s-7.3,1-10.4,2.9c-4.1,2.6-6.2,5.9-6.2,10.1s.4,2.4,1.1,3.5c1.7,2.5,6,5.1,13,7.8,7.8,3.1,12.5,5,14.1,5.7,7.1,3.5,10.6,7.7,10.6,12.6,0,3.8-1.7,7.2-5,10.4-4.5,4.2-10.2,6.3-17.2,6.3s-11-1.5-15.3-4.6c-4.6-3.3-6.8-7.3-6.8-12h3.7c0,2.9,1.3,5.5,3.8,7.9,3.8,3.4,8.7,5.1,14.7,5.1s8.3-1,11.8-3.1c4.4-2.6,6.7-5.9,6.7-9.9s-.4-2.5-1.2-3.7c-1.7-2.5-6-5.1-13-7.9-7.8-3-12.5-4.9-14-5.6-7.1-3.5-10.6-7.6-10.6-12.4s1.4-7.2,4.3-10.3c4.1-4.3,9.4-6.4,16-6.4s9.8,1.4,13.7,4.3c4.4,3.3,6.7,7.4,6.7,12.3h-3.7Z"/>
+        <path class="lst0" d="M349.8,177.9h3.9v1.8c0,0-.2,40.6-.2,40.6,0,3.9,1.4,7.5,4.2,10.5,3.7,4.1,8.5,6.1,14.3,6.1s8.4-1.3,11.9-3.9c4.4-3.3,6.6-7.6,6.6-12.8v-42.4h3.9v1.8c0,0-.2,40.6-.2,40.6,0,5.1-1.8,9.5-5.5,13.4-4.4,4.6-10,6.9-16.7,6.9s-10.8-1.8-15.1-5.4c-4.7-4.1-7.1-9.1-7.1-15v-42.4Z"/>
+        <path class="lst0" d="M444.1,194.4c0-2.8-1.1-5.4-3.3-7.8-3.4-3.5-7.8-5.2-13.3-5.2s-7.3,1-10.4,2.9c-4.1,2.6-6.2,5.9-6.2,10.1s.4,2.4,1.1,3.5c1.7,2.5,6,5.1,13,7.8,7.8,3.1,12.5,5,14.1,5.7,7.1,3.5,10.6,7.7,10.6,12.6,0,3.8-1.7,7.2-5,10.4-4.5,4.2-10.2,6.3-17.2,6.3s-11-1.5-15.3-4.6c-4.6-3.3-6.8-7.3-6.8-12h3.7c0,2.9,1.3,5.5,3.8,7.9,3.8,3.4,8.7,5.1,14.7,5.1s8.3-1,11.8-3.1c4.4-2.6,6.7-5.9,6.7-9.9s-.4-2.5-1.2-3.7c-1.7-2.5-6-5.1-13-7.9-7.8-3-12.5-4.9-14-5.6-7.1-3.5-10.6-7.6-10.6-12.4s1.4-7.2,4.3-10.3c4.1-4.3,9.4-6.4,16-6.4s9.8,1.4,13.7,4.3c4.4,3.3,6.7,7.4,6.7,12.3h-3.7Z"/>
+        <path class="lst0" d="M458.2,240.6h-4.1l1.2-2.6,25.9-59.2.5-1.1h2.4l.5,1.1,25.9,59.2,1.2,2.6h-4.1l-.5-1.1-24.2-55.3-24.2,55.3-.5,1.1Z"/>
+        <path class="lst0" d="M525.4,240.6h-3.7v-62.9h2.8l.6.7,39.1,54.5v-53.4c0,0,0-1.8,0-1.8h3.7v61c0,0,0,1.8,0,1.8h-2.8l-.6-.7-39.1-54.5v55.3Z"/>
+        <!-- NYA TONDO text -->
+        <path class="lst0" d="M303.6,331.7h-3.7v-62.9h2.8l.6.7,39.1,54.5v-53.4c0,0,0-1.8,0-1.8h3.7v61c0,0,0,1.8,0,1.8h-2.8l-.6-.7-39.1-54.5v55.3Z"/>
+        <path class="lst0" d="M380.5,329.8v1.8h-3.7v-30.9l-19.3-29.1-1.8-2.9h4.4l.6.8,18,27.3,17.7-27.3.6-.8h4.4l-1.8,2.9-19,29.1v29Z"/>
+        <path class="lst0" d="M406.5,331.7h-4.1l1.2-2.6,25.9-59.2.5-1.1h2.4l.5,1.1,25.9,59.2,1.2,2.6h-4.1l-.5-1.1-24.2-55.3-24.2,55.3-.5,1.1Z"/>
+        <path class="lst0" d="M507,268.8h1.8v3.7h-22.1v59.2h-3.7v-59.2h-22.3v-3.7h46.2Z"/>
+        <path class="lst0" d="M522.8,277.7c5.4-5.9,11.9-8.9,19.3-8.9s13.9,3,19.3,8.9c5.6,6.2,8.4,13.7,8.4,22.6s-2.8,16.4-8.4,22.6c-5.4,5.9-11.9,8.9-19.3,8.9-7.5,0-13.9-3-19.3-8.9-5.6-6.2-8.4-13.7-8.4-22.6s2.8-16.4,8.4-22.6ZM525,319.6c4.7,5.5,10.4,8.3,17.1,8.3s11.8-2.5,16.5-7.6c5.1-5.5,7.6-12.2,7.6-20.2s-2.3-14-6.9-19.4c-4.7-5.5-10.4-8.3-17.1-8.3-6.3,0-11.8,2.6-16.5,7.6-5.1,5.5-7.6,12.2-7.6,20.2s2.3,14,6.9,19.4Z"/>
+        <path class="lst0" d="M586.5,331.7h-3.7v-62.9h2.8l.6.7,39.1,54.5v-53.4c0,0,0-1.8,0-1.8h3.7v61c0,0,0,1.8,0,1.8h-2.8l-.6-.7-39.1-54.5v55.3Z"/>
+        <path class="lst0" d="M645.6,331.7v-62.9h24.2c6.9.7,12.7,3.9,17.4,9.5,5.1,6.2,7.2,13.5,6.5,21.9.7,8.1-1.4,15.3-6.2,21.5-4.7,6-10.6,9.3-17.7,9.9h-24.2ZM669.6,328c5.8-.6,10.7-3.3,14.7-8.1,4.4-5.5,6.3-12.1,5.7-19.6v-.2c.6-6.9-1.1-13-4.9-18.4-4-5.5-9.2-8.6-15.5-9.2h-20.2v55.5h20.2Z"/>
+        <path class="lst0" d="M711.3,277.7c5.4-5.9,11.9-8.9,19.3-8.9s13.9,3,19.3,8.9c5.6,6.2,8.4,13.7,8.4,22.6s-2.8,16.4-8.4,22.6c-5.4,5.9-11.9,8.9-19.3,8.9-7.5,0-13.9-3-19.3-8.9-5.6-6.2-8.4-13.7-8.4-22.6s2.8-16.4,8.4-22.6ZM713.6,319.6c4.7,5.5,10.4,8.3,17.1,8.3s11.8-2.5,16.5-7.6c5.1-5.5,7.6-12.2,7.6-20.2s-2.3-14-6.9-19.4c-4.7-5.5-10.4-8.3-17.1-8.3-6.3,0-11.8,2.6-16.5,7.6-5.1,5.5-7.6,12.2-7.6,20.2s2.3,14,6.9,19.4Z"/>
+        <!-- INCORPORATED text (white) -->
+        <path class="lst1" d="M301.9,356.6h1.9v33h-1.9v-33Z"/>
+        <path class="lst1" d="M314.2,389.6h-1.9v-33h1.5l.3.4,20.5,28.6v-28.1s0-1,0-1h1.9v32s0,1,0,1h-1.5l-.3-.4-20.5-28.6v29Z"/>
+        <path class="lst1" d="M369.4,382.6c-.7,1.2-1.6,2.3-2.9,3.3-2.9,2.4-6.1,3.6-9.6,3.6-3.9,0-7.3-1.6-10.1-4.7-2.9-3.2-4.4-7.2-4.4-11.8s1.5-8.6,4.4-11.8c2.8-3.1,6.2-4.7,10.1-4.7s4.4.5,6.5,1.6c2.8,1.4,4.8,3.3,5.9,5.5l-1.7.9c-.6-1-1.4-2-2.4-3-2.5-2-5.2-3.1-8.3-3.1-3.3,0-6.2,1.4-8.7,4-2.6,2.9-3.9,6.4-3.9,10.6s1.2,7.3,3.6,10.1c2.5,2.9,5.5,4.4,9,4.4s3.4-.4,5.1-1.1c2.6-1.2,4.5-2.8,5.7-4.9l1.7,1Z"/>
+        <path class="lst1" d="M377.8,361.3c2.8-3.1,6.2-4.7,10.1-4.7s7.3,1.6,10.1,4.7c2.9,3.2,4.4,7.2,4.4,11.8s-1.5,8.6-4.4,11.8c-2.8,3.1-6.2,4.7-10.1,4.7-3.9,0-7.3-1.6-10.1-4.7-2.9-3.2-4.4-7.2-4.4-11.8s1.5-8.6,4.4-11.8ZM379,383.3c2.5,2.9,5.5,4.4,9,4.4s6.2-1.3,8.6-4c2.7-2.9,4-6.4,4-10.6s-1.2-7.3-3.6-10.2c-2.5-2.9-5.5-4.4-9-4.4-3.3,0-6.2,1.4-8.6,4-2.7,2.9-4,6.4-4,10.6s1.2,7.3,3.6,10.2Z"/>
+        <path class="lst1" d="M427.5,375c2,2.3,4,6.7,6,13.4l.4,1.3h-2l-.2-.7c-1.4-4.6-2.7-8-3.9-10.2-1-1.8-2.4-3.4-4.2-4.7h-12.3v15.5h-1.9v-32s0-1,0-1h14.5c2.4,0,4.5.6,6.4,2,2.3,1.8,3.4,4,3.4,6.7s-.4,2.7-1.1,4c-1.4,2.3-3.4,3.8-6.2,4.4.4.4.8.7,1.2,1.2ZM423.9,372.1c1.7,0,3.3-.5,4.8-1.4,2-1.4,3-3.1,3-5.3s-.5-2.8-1.6-4.1c-1.6-1.8-3.6-2.8-6.3-2.8h-12.6v13.6h5.9s0,0,0,0h6.7Z"/>
+        <path class="lst1" d="M440.4,373.1v-15.5s0-1,0-1h14.5c2.4,0,4.5.7,6.3,2.1,2.3,1.7,3.4,4,3.4,6.6s-.7,3.9-2.2,5.5c-1.9,2.1-4.4,3.2-7.5,3.2h-12.6v15.5h-1.9v-16.5ZM455,372.1c1.7,0,3.3-.5,4.8-1.4,2-1.4,3-3.1,3-5.3s-.5-2.9-1.6-4.1c-1.6-1.8-3.6-2.7-6.2-2.7h-12.6v13.6h12.6Z"/>
+        <path class="lst1" d="M473,361.3c2.8-3.1,6.2-4.7,10.1-4.7s7.3,1.6,10.1,4.7c2.9,3.2,4.4,7.2,4.4,11.8s-1.5,8.6-4.4,11.8c-2.8,3.1-6.2,4.7-10.1,4.7-3.9,0-7.3-1.6-10.1-4.7-2.9-3.2-4.4-7.2-4.4-11.8s1.5-8.6,4.4-11.8ZM474.1,383.3c2.5,2.9,5.5,4.4,9,4.4s6.2-1.3,8.6-4c2.7-2.9,4-6.4,4-10.6s-1.2-7.3-3.6-10.2c-2.5-2.9-5.5-4.4-9-4.4-3.3,0-6.2,1.4-8.6,4-2.7,2.9-4,6.4-4,10.6s1.2,7.3,3.6,10.2Z"/>
+        <path class="lst1" d="M522.7,375c2,2.3,4,6.7,6,13.4l.4,1.3h-2l-.2-.7c-1.4-4.6-2.7-8-3.9-10.2-1-1.8-2.4-3.4-4.2-4.7h-12.3v15.5h-1.9v-32s0-1,0-1h14.5c2.4,0,4.5.6,6.4,2,2.3,1.8,3.4,4,3.4,6.7s-.4,2.7-1.1,4c-1.4,2.3-3.4,3.8-6.2,4.4.4.4.8.7,1.2,1.2ZM519,372.1c1.7,0,3.3-.5,4.8-1.4,2-1.4,3-3.1,3-5.3s-.5-2.8-1.6-4.1c-1.6-1.8-3.6-2.8-6.3-2.8h-12.6v13.6h5.9s0,0,0,0h6.7Z"/>
+        <path class="lst1" d="M533.2,389.6h-2.1l.6-1.4,13.6-31.1.2-.6h1.3l.2.6,13.6,31.1.6,1.4h-2.1l-.2-.6-12.7-29-12.7,29-.2.6Z"/>
+        <path class="lst1" d="M586,356.6h1v1.9h-11.6v31.1h-1.9v-31.1h-11.7v-1.9h24.3Z"/>
+        <path class="lst1" d="M615.1,356.6v1.9h-21.4v13.6h15.6v1.9h-15.6v13.6h21.4v1.9h-23.3v-33h23.3Z"/>
+        <path class="lst1" d="M621.9,389.6v-33h12.7c3.6.4,6.7,2,9.1,5,2.7,3.3,3.8,7.1,3.4,11.5.4,4.2-.7,8-3.3,11.3-2.5,3.1-5.6,4.9-9.3,5.2h-12.7ZM634.5,387.7c3-.3,5.6-1.7,7.7-4.3,2.3-2.9,3.3-6.3,3-10.3h0c.3-3.7-.6-6.9-2.6-9.8-2.1-2.9-4.8-4.5-8.2-4.8h-10.6v29.1h10.6Z"/>
+      </svg>
     </div>
+
+    <div class="hero-divider-band" style="animation: fadeUp 0.8s ease both; animation-delay: 0.4s;"></div>
+
+    <h1 class="hero-name" style="animation: fadeUp 0.8s ease both; animation-delay: 0.5s;">Susan <span>Nyatondo</span></h1>
+    <div class="hero-firm" style="animation: fadeUp 0.8s ease both; animation-delay: 0.6s;">Susan Nyatondo Incorporated</div>
+    <div class="hero-title" style="animation: fadeUp 0.8s ease both; animation-delay: 0.7s;">Director &amp; Legal Practitioner</div>
+    <div class="hero-gold-rule" style="animation: fadeUp 0.8s ease both; animation-delay: 0.8s; margin-bottom: 24px;"></div>
+
   </div>
-  <iframe class="map-frame" src="https://maps.google.com/maps?q=-22.623554,17.078720&z=17&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Khomas Media Office Location"></iframe>
-</div>
+</section>
 
-<a href="data:text/vcard;base64,QkVHSU46VkNBUkQNClZFUlNJT046Mi4xDQpOOkthbnlhbmdlbGE7TWFydGluO04gOzsNCkZOOk1hcnRpbiBOIEthbnlhbmdlbGENClRFTDtDRUxMO1BSRUY6KzI2NDgxMjExMzk0Ng0KRU1BSUw7UFJFRjtIT01FOm1hcnRpbkBraG9tYXNtZWRpYS5jb20NCkVNQUlMO1dPUks6aW5mb0BraG9tYXNtZWRpYS5jb20NCkFEUjtQUkVGO1dPUks6OztOby4gMzU0LCBPdGppdGVuZGEgU3RyZWV0LCBQcm9zcGVyaXRhO1dpbmRob2VrOzs7TmFtaWJpYQ0KT1JHOktob21hcyBNZWRpYQ0KVElUTEU6RGlyZWN0b3INClVSTDp3d3cua2hvbWFzbWVkaWEuY29tDQpFTkQ6VkNBUkQNCg==" download="Martin_N_Kanyangela.vcf" class="save-btn">
-  <svg viewBox="0 0 24 24" fill="none"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" fill="white"/></svg>
-  Save to Contacts
-</a>
+<!-- SOCIAL -->
+<section class="social-section reveal">
+  <div class="section-label">Connect</div>
+  <div class="social-row">
 
-<div class="socials">
-  <a href="https://www.facebook.com/p/Khomas-Media-Agency-61557069831400/" target="_blank" class="social-btn" aria-label="Facebook">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z" fill="white"/></svg>
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/snyatondoinc" target="_blank" class="social-icon">
+      <div class="social-icon-circle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+      </div>
+      <span class="social-label">Facebook</span>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/snyatondoinc" target="_blank" class="social-icon">
+      <div class="social-icon-circle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </div>
+      <span class="social-label">Instagram</span>
+    </a>
+
+    <!-- X / Twitter -->
+    <a href="https://x.com/snyatondoinc" target="_blank" class="social-icon">
+      <div class="social-icon-circle">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </div>
+      <span class="social-label">Twitter / X</span>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/company/snyatondoinc" target="_blank" class="social-icon">
+      <div class="social-icon-circle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </div>
+      <span class="social-label">LinkedIn</span>
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/264813038399" target="_blank" class="social-icon">
+      <div class="social-icon-circle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+      </div>
+      <span class="social-label">WhatsApp</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section reveal">
+  <div class="section-title">Contact</div>
+
+  <a href="tel:+264813038399" class="contact-card">
+    <div class="contact-icon-box">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.96-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+    </div>
+    <div class="contact-info">
+      <div class="contact-label">Mobile</div>
+      <div class="contact-value">+264 81 303 8399</div>
+    </div>
   </a>
-  <a href="https://www.instagram.com/khomasmedia/" target="_blank" class="social-btn" aria-label="Instagram">
-    <svg viewBox="0 0 24 24" fill="none">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="white" stroke-width="2" fill="none"/>
-      <circle cx="12" cy="12" r="4" stroke="white" stroke-width="2" fill="none"/>
-      <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+
+  <a href="tel:+26461221299" class="contact-card">
+    <div class="contact-icon-box">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+        <line x1="12" y1="18" x2="12.01" y2="18"/>
+      </svg>
+    </div>
+    <div class="contact-info">
+      <div class="contact-label">Office</div>
+      <div class="contact-value">+264 61 221 299</div>
+    </div>
+  </a>
+
+  <a href="mailto:susan@snyatondo.org" class="contact-card">
+    <div class="contact-icon-box">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+    </div>
+    <div class="contact-info">
+      <div class="contact-label">Email</div>
+      <div class="contact-value">susan@snyatondo.org</div>
+    </div>
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section reveal">
+  <div class="section-title">About</div>
+  <div class="gold-quote">"</div>
+  <p class="about-text">
+    <span>Susan Nyatondo Incorporated</span> is a distinguished Namibian law firm providing
+    comprehensive legal services to individuals, businesses, and organisations across Namibia.
+    Founded on the principles of <span>integrity</span>, <span>excellence</span>, and
+    <span>client-centred advocacy</span>, the firm is authorised and regulated by the
+    Law Society of Namibia.
+  </p>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section reveal">
+  <div class="section-title">Practice Areas</div>
+  <div class="service-grid">
+
+    <div class="service-card">
+      <div class="service-icon">
+        <!-- Scales of Justice - Civil Litigation -->
+        <svg viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="21" x2="21" y2="21"/><line x1="12" y1="8" x2="6" y2="14"/><path d="M6 8l-3 6a3 3 0 0 0 6 0z"/><line x1="12" y1="8" x2="18" y2="14"/><path d="M18 8l3 6a3 3 0 0 1-6 0z"/></svg>
+      </div>
+      <div class="service-name">Civil Litigation</div>
+      <div class="service-desc">Strategic representation in High Court and Magistrate proceedings, enforcement of rights, and alternative dispute resolution.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <!-- Office building - Corporate Law -->
+        <svg viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+      </div>
+      <div class="service-name">Corporate &amp; Commercial Law</div>
+      <div class="service-desc">Company incorporation, governance structuring, shareholder agreements, and regulatory compliance.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <!-- Handcuffs - Criminal Law -->
+        <svg viewBox="0 0 24 24"><circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4"/><line x1="11" y1="12" x2="13" y2="12"/><line x1="5" y1="7" x2="9" y2="7"/><line x1="15" y1="7" x2="19" y2="7"/></svg>
+      </div>
+      <div class="service-name">Criminal Law</div>
+      <div class="service-desc">Robust defence representation in criminal proceedings, bail applications, and advocacy at all court levels.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <!-- Pen on document - Wills & Estates -->
+        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <div class="service-name">Wills &amp; Estates</div>
+      <div class="service-desc">Drafting of wills, deceased estate administration, and probate proceedings to protect your family's legacy.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <!-- File with signature lines - Contracts -->
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+      </div>
+      <div class="service-name">Contracts &amp; Agreements</div>
+      <div class="service-desc">Drafting, reviewing, and negotiating commercial contracts, service agreements, and joint venture arrangements.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <!-- Clipboard with checkmark - Compliance & Risk -->
+        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <div class="service-name">Compliance &amp; Risk</div>
+      <div class="service-desc">Regulatory compliance advisory, risk assessments, and governance frameworks for businesses operating in Namibia.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <!-- Two people / family - Family Law -->
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="service-name">Family Law</div>
+      <div class="service-desc">Sensitive guidance on divorce, child custody, maintenance, and domestic partnership matters with discretion and care.</div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <!-- Briefcase - Labour Law -->
+        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12"/><path d="M12 12h.01"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+      </div>
+      <div class="service-name">Labour Law</div>
+      <div class="service-desc">Employment contract advice, disciplinary hearings, unfair dismissal claims, and labour court representation.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section reveal">
+  <div class="section-title">Location</div>
+  <div class="map-wrap">
+    <iframe
+      src="https://maps.google.com/maps?q=Veronica+Court+Nachitigal+Street+Ausspanplatz+Windhoek+Namibia&output=embed"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Susan Nyatondo Incorporated Location">
+    </iframe>
+  </div>
+  <a href="https://maps.app.goo.gl/qL6ZXhC1bsR9hDdQ6" target="_blank" class="address-box">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+      <circle cx="12" cy="10" r="3"/>
     </svg>
+    <div class="address-text">
+      <strong>OUR OFFICE</strong>
+      No. 15 Veronica Court, Nachitigal Street,<br>
+      Ausspanplatz, Windhoek, Namibia
+    </div>
   </a>
-  <a href="https://x.com/KhomasMedia" target="_blank" class="social-btn" aria-label="X / Twitter">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="white"/></svg>
-  </a>
+</section>
+
+<!-- HOURS -->
+<section class="hours-section reveal">
+  <div class="section-title">Office Hours</div>
+  <div class="hours-row">
+    <span class="hours-day">Monday – Thursday</span>
+    <span class="hours-time">08:00 – 17:00</span>
+  </div>
+  <div class="hours-row">
+    <span class="hours-day">Friday</span>
+    <span class="hours-time">08:00 – 16:00</span>
+  </div>
+  <div class="hours-row">
+    <span class="hours-day">Saturday</span>
+    <span class="hours-closed">By appointment</span>
+  </div>
+  <div class="hours-row">
+    <span class="hours-day">Sunday</span>
+    <span class="hours-closed">Closed</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">Susan Nyatondo Incorporated</div>
+  <div class="footer-sub">Legal Practitioners · Windhoek, Namibia</div>
+  <div class="footer-auth">"Authorised and Regulated by the Law Society of Namibia"</div>
+  <div class="footer-bottom-bar"></div>
+</footer>
+
+<!-- STICKY BOTTOM — SAVE ONLY -->
+<div class="bottom-actions">
+  <button class="bottom-btn-primary" onclick="saveContact()">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+      <polyline points="17 21 17 13 7 13 7 21"/>
+      <polyline points="7 3 7 8 15 8"/>
+    </svg>
+    Save Contact
+  </button>
 </div>
 
-<div class="footer">
-  <strong>Khomas Media</strong> · Digital Business Card<br/>
-  &copy; 2026 All rights reserved
-</div>
+<script>
+  // ── PRELOADER ──
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('preloader').classList.add('hide');
+    }, 1900);
+  });
 
-</div>
+  // ── PARTICLES ──
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.setProperty('--dur', `${6 + Math.random() * 8}s`);
+    p.style.setProperty('--delay', `${Math.random() * 6}s`);
+    p.style.setProperty('--drift', `${(Math.random() - 0.5) * 80}px`);
+    p.style.left = `${Math.random() * 100}%`;
+    p.style.width = p.style.height = `${1 + Math.random() * 2}px`;
+    container.appendChild(p);
+  }
+
+  // ── SCROLL REVEAL ──
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ── SAVE CONTACT (vCard) ──
+  function saveContact() {
+    const vcard = [
+      'BEGIN:VCARD',
+      'VERSION:3.0',
+      'N:Nyatondo;Susan;;;',
+      'FN:Susan Nyatondo',
+      'ORG:Susan Nyatondo Incorporated',
+      'TITLE:Director | Legal Practitioner',
+      'TEL;TYPE=CELL:+264813038399',
+      'TEL;TYPE=WORK,VOICE:+26461221299',
+      'EMAIL;TYPE=WORK:susan@snyatondo.org',
+      'ADR;TYPE=WORK:;;No. 15 Veronica Court\\, Nachitigal Street\\, Ausspanplatz;Windhoek;;Khomas Region;Namibia',
+      'URL:https://www.snyatondo.org',
+      'NOTE:Authorised and Regulated by the Law Society of Namibia. B Juris\\, LLB (UNAM)\\, Compliance Mgt Certificate (UCT)\\, BA English.',
+      'END:VCARD'
+    ].join('\r\n');
+
+    const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Susan_Nyatondo.vcf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+</script>
 </body>
 </html>
